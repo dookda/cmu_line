@@ -3,6 +3,7 @@ import Nav from "../Nav/Nav";
 import './Point.css'
 
 const Point = () => {
+
     return (
         <>
             <Nav />

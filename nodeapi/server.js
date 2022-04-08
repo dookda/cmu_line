@@ -5,13 +5,15 @@ const db = con.db;
 const app = express()
 const port = 3100
 
+const googleapi = require('./googleapi');
+app.use(googleapi);
+
 app.post('/api/getprofile', (req, res) => {
     res.send('Hello World!')
 });
 
 app.post('/api/setprofile', async (req, res) => {
     const { usrid, data } = req.body;
-    // const sql = `INSERT INTO usertb(usrid, username, agency, linename, email, tel)VALUES('${usrid}', '${username}', '${agency}', '${linename}', '${email}', '${tel}') `;
     await db.query(`INSERT INTO usertb(usrid, ts)VALUES('${usrid}', now())`)
 
     let d;
@@ -24,6 +26,12 @@ app.post('/api/setprofile', async (req, res) => {
     res.status(200).json({
         data: "success"
     })
+})
+
+app.get('/api/test', async (req, res) => {
+
+
+
 })
 
 app.listen(port, () => {

@@ -1,4 +1,4 @@
-const fs = require("fs");
+// const fs = require("fs");
 const { google } = require("googleapis");
 const express = require('express');
 const service = google.sheets("v4");
@@ -13,58 +13,37 @@ const authClient = new google.auth.JWT(
     ["https://www.googleapis.com/auth/spreadsheets"]
 );
 
-const getdata = async () => {
+const getdata = async (spreadsheetId, range) => {
     try {
-
-        // Authorize the client
         const token = await authClient.authorize();
-
-        // Set the client credentials
         authClient.setCredentials(token);
-
-        // Get the rows
         const res = await service.spreadsheets.values.get({
             auth: authClient,
-            spreadsheetId: "1Z0EskTZ7FtyQnOPyhyIfbx6VAh6uSjqIDRSKyan8ZPM",
-            range: "B:C",
+            spreadsheetId: spreadsheetId,
+            range: range,
         });
-
-        // All of the answers
         const answers = [];
-
-        // Set rows to equal the rows
         const rows = res.data.values;
-
-        // Check if we have any data and if we do add it to our answers array
         if (rows.length) {
-
-            // Remove the headers
             rows.shift()
-
-            // For each row
             for (const row of rows) {
-                answers.push({ grade: row[0], answer: row[1] });
+                answers.push({ point: Number(row[0].split(" ")[0]), name: row[1] });
             }
-
         } else {
             console.log("No data found.");
         }
-
-        console.log(answers);
-
-
+        return answers
     } catch (error) {
-
-        // Log the error
         console.log(error);
-
-        // Exit the process with error
         process.exit(1);
-
     }
-
 }
 
-getdata();
+app.get('/api/getsheet', async (req, res) => {
+    const spreadsheetId = "1Z0EskTZ7FtyQnOPyhyIfbx6VAh6uSjqIDRSKyan8ZPM";
+    const range = "B:C";
+    let data = await getdata(spreadsheetId, range);
+    res.status(200).json({ data })
+})
 
 module.exports = app;

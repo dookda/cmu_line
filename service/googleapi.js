@@ -1,8 +1,10 @@
-// const fs = require("fs");
 const { google } = require("googleapis");
 const express = require('express');
 const service = google.sheets("v4");
 const credentials = require("./credentials_key.json");
+
+const con = require("./db");
+const db = con.db;
 
 const app = express.Router();
 // Configure auth client
@@ -39,9 +41,10 @@ const getdata = async (spreadsheetId, range) => {
     }
 }
 
-app.get('/api/getsheet', async (req, res) => {
-    const spreadsheetId = "1Z0EskTZ7FtyQnOPyhyIfbx6VAh6uSjqIDRSKyan8ZPM";
-    const range = "B:C";
+app.post('/api/getsheet', async (req, res) => {
+    // const spreadsheetId = "1Z0EskTZ7FtyQnOPyhyIfbx6VAh6uSjqIDRSKyan8ZPM";
+    // const range = "B:C";
+    const { spreadsheetId, range } = req.body;
     let data = await getdata(spreadsheetId, range);
     res.status(200).json({ data })
 })

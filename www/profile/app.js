@@ -12,7 +12,7 @@ function initializeLiff() {
     });
 }
 // var url = 'https://rti2dss.com/p3510';
-var url = 'https://c276-2001-44c8-45ca-f571-f0cf-3495-c726-27d1.ngrok.io'
+var url = 'localhost:3100'
 
 let getData = (usrid) => {
     axios.post(url + "/api/getuser", { usrid }).then((r) => {

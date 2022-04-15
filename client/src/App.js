@@ -1,9 +1,10 @@
+import 'bootstrap/dist/css/bootstrap.css'
 import './App.css';
 import Nav from './components/Nav';
 
 function App() {
   return (
-    <div>
+    <div className='container'>
       <Nav />
     </div>
   );

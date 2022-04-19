@@ -1,4 +1,19 @@
 const Nav = () => {
+    const liff = window.liff;
+    const initialize = () => {
+        liff.init(async (data) => {
+            let profile = await liff.getProfile();
+            this.setState({
+                displayName: profile.displayName,
+                userId: profile.userId,
+                pictureUrl: profile.pictureUrl,
+                statusMessage: profile.statusMessage
+            });
+        });
+    }
+
+
+
     return (
         <div>
             hello nav

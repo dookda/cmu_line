@@ -59,4 +59,4 @@ async function getUserid() {
     // console.log(profile);
     getData(await profile.userId)
 }
-initializeLiff()
+// initializeLiff()

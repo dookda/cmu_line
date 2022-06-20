@@ -117,8 +117,9 @@ const handleMessageEvent = async (e) => {
         return client.replyMessage(e.replyToken, msg);
     } else {
         var msg = {
-            type: 'text',
-            text: 'สวัสดีครัช'
+            type: 'sticker',
+            package: '6136',
+            stickerId: "10551378"
         };
         return client.replyMessage(e.replyToken, msg);
     }

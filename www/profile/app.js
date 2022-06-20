@@ -11,7 +11,7 @@ function initializeLiff() {
         console.log(err);
     });
 }
-var url = 'https://rti2dss.com/p3510';
+var url = 'https://rti2dss.com/p3200';
 // var url = 'https://1c33-2405-9800-b500-992b-c8b5-ce82-64f8-bad2.ngrok.io'
 
 let getData = (usrid) => {

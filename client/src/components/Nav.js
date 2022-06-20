@@ -12,7 +12,7 @@ const Nav = () => {
         });
     }
 
-
+    initialize()
 
     return (
         <div>

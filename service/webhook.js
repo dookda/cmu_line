@@ -118,7 +118,7 @@ const handleMessageEvent = async (e) => {
     } else {
         var msg = {
             type: 'sticker',
-            package: '6136',
+            packageId: '6136',
             stickerId: "10551378"
         };
         return client.replyMessage(e.replyToken, msg);

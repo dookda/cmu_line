@@ -2,7 +2,7 @@
   "name": "cmu_line",
   "version": "1.0.0",
   "description": "api",
-  "main": "server.js",
+  "main": "server_3200.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

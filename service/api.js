@@ -2,6 +2,7 @@ const express = require('express');
 const moment = require('moment');
 const app = express.Router();
 const _ = require('lodash');
+const qrcode = require('qrcode');
 
 const con = require("./db");
 const db = con.db;
@@ -92,5 +93,26 @@ app.post("/api/updateuser", (req, res) => {
         res.status(200).json({ data: "success" })
     })
 });
+
+app.post("/api/checkin", (req, res) => {
+    const { usrid, studentid, username } = req.body;
+    const sql = `INSERT INTO checkin (usrid,studentid,username,ts) VALUES ('${usrid}','${studentid}','${username}',now())`;
+    db.query(sql).then(r => {
+        res.status(200).json({
+            data: "success"
+        })
+    })
+})
+
+app.post("/api/genqr", (req, res) => {
+    const { usrid } = req.body;
+
+    let stringdata = "https://liff.line.me/1657043590-BOEgp5Yl"
+    let errorCorrectionLevel = { errorCorrectionLevel: 'H' }
+    qrcode.toDataURL(stringdata, errorCorrectionLevel, (err, code) => res.status(200).json({ data: code }));
+    // qrcode.toString(stringdata, function (err, code) {
+    //     console.log(code)
+    // });
+})
 
 module.exports = app;

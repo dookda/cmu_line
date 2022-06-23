@@ -1,0 +1,7 @@
+
+POST http://localhost:3200/api/genqr/ HTTP/1.1
+content-type: application/json
+
+{
+    "usrid": "usrid"
+}

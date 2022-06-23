@@ -26,7 +26,7 @@ let getData = (usrid) => {
 let modal = new bootstrap.Modal(document.getElementById('modal'), {
     keyboard: false
 })
-let updateUser = () => {
+let updateUser = async () => {
     let obj = {
         usrid: document.getElementById("usrid").value,
         data: {
@@ -40,8 +40,9 @@ let updateUser = () => {
         // console.log(r);
         modal.show();
         getData(usrid)
-        setTimeout(() => {
+        setTimeout(async () => {
             modal.hide();
+            await liff.closeWindow()
         }, 2000);
     })
 }

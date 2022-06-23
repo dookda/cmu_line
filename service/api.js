@@ -20,7 +20,7 @@ app.post("/api/getuser", (req, res) => {
 app.post("/api/getalluser", (req, res) => {
     const { usrid } = req.body;
     // console.log(usrid);
-    const sql = `SELECT * FROM student `;
+    const sql = `SELECT *, TO_CHAR(ts, 'DD-MM-YYYY') as ts7 FROM student `;
     db.query(sql).then(r => {
         res.status(200).json({
             data: r.rows
@@ -103,6 +103,17 @@ app.post("/api/checkin", (req, res) => {
         })
     })
 })
+
+app.post("/api/getcheckin", (req, res) => {
+    const { usrid } = req.body;
+    // console.log(usrid); 
+    const sql = `SELECT *, TO_CHAR(ts, 'DD-MM-YYYY HH24:MI') as ts7 FROM checkin `;
+    db.query(sql).then(r => {
+        res.status(200).json({
+            data: r.rows
+        })
+    })
+});
 
 app.post("/api/genqr", (req, res) => {
     const { usrid } = req.body;

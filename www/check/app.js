@@ -12,11 +12,8 @@ function initializeLiff() {
     });
 }
 
-// axios.post('/api/genqr', { usrid: 'usrid' }).then(async (r) => {
-//     console.log(r.data);
-//     $('#qr').attr('src', r.data.data);
-
-// })
+var url = 'https://rti2dss.com/p3200';
+// var url = 'https://c02a-202-28-250-87.ngrok.io';
 
 let modal = new bootstrap.Modal(document.getElementById('modal'), {
     keyboard: false
@@ -27,7 +24,7 @@ const checkIn = () => {
     const studentid = document.getElementById("studentid").value
     const username = document.getElementById("username").value
     console.log(usrid, studentid, username);
-    axios.post('/api/checkin', { usrid, studentid, username }).then(async (r) => {
+    axios.post(url + '/api/checkin', { usrid, studentid, username }).then(async (r) => {
         console.log(r);
         modal.show();
         // getData(usrid)
@@ -44,7 +41,7 @@ register.style.display = 'none';
 checkname.style.display = 'none';
 
 const getUser = async (usrid) => {
-    axios.post('/api/getuser', { usrid }).then(async (r) => {
+    axios.post(url + '/api/getuser', { usrid }).then(async (r) => {
         if (r.data.data.length) {
             // console.log(r.data.data[0]);
             checkname.style.display = 'block';

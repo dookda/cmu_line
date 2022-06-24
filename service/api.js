@@ -120,7 +120,7 @@ app.post("/api/checkin", (req, res) => {
     db.query(sql).then(r => {
         const msg = [{
             type: 'text',
-            text: `${username}`
+            text: `${username} [${moment().format('L')}]`
         }, {
             type: 'text',
             text: 'มาคับ!!'

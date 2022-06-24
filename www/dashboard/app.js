@@ -44,6 +44,12 @@ let showData = async () => {
     });
 }
 
+const confirmDelete = (gid, usrid) => {
+    axios.post(url + '/api/getcheckin', { gid, usrid }).then(() => {
+        console.log("success");
+    })
+}
+
 
 let showCheckin = async () => {
     let table = $('#checkin').DataTable({
@@ -64,7 +70,12 @@ let showCheckin = async () => {
                     let a = moment(data.ts).zone('-0700').format('YYYY-MM-DD HH:mm')
                     return a
                 }
-            },
+            }, {
+                data: null,
+                render: function (data, type, row, meta) {
+                    return `<button class="btn btn-margin btn-outline-danger" onclick="confirmDelete('${row.gid}','${row.usrid}')"><i class="bi bi-trash"></i>&nbsp;ลบ</button>`
+                }
+            }
         ],
         dom: 'Bfrtip',
         buttons: [

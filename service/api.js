@@ -60,6 +60,16 @@ app.post("/api/delete", (req, res) => {
     })
 });
 
+app.post("/api/deletecheckin", (req, res) => {
+    const { gid, usrid } = req.body;
+    const sql = `DELETE FROM checkin WHERE gid=${gid} AND usrid=${usrid}`;
+    db.query(sql).then(r => {
+        res.status(200).json({
+            data: "success"
+        })
+    })
+});
+
 app.post("/api/insertuser", async (req, res) => {
     const { usrid, data } = req.body;
     // const sql = `INSERT INTO usertb(usrid, username, agency, linename, email, tel)VALUES('${usrid}', '${username}', '${agency}', '${linename}', '${email}', '${tel}') `;

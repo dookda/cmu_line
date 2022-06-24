@@ -11,8 +11,8 @@ function initializeLiff() {
         console.log(err);
     });
 }
-var url = 'https://rti2dss.com/p3200';
-// var url = 'https://c02a-202-28-250-87.ngrok.io';
+// var url = 'https://rti2dss.com/p3200';
+var url = 'https://c02a-202-28-250-87.ngrok.io';
 let showData = async () => {
     let table = $('#tab').DataTable({
         ajax: {
@@ -44,10 +44,29 @@ let showData = async () => {
     });
 }
 
-const confirmDelete = (gid, usrid) => {
-    axios.post(url + '/api/getcheckin', { gid, usrid }).then(() => {
-        console.log("success");
+let modal = new bootstrap.Modal(document.getElementById('modal'), {
+    keyboard: false
+})
+
+const closeModal = () => {
+    modal.hide();
+}
+
+const confirmDelete = () => {
+    const gid = document.getElementById("gid").value;
+    const usrid = document.getElementById("usrid").value;
+    axios.post(url + '/api/deletecheckin', { gid, usrid }).then((r) => {
+        $('#checkin').DataTable().ajax.reload();
+        modal.hide();
     })
+}
+
+const deleteModal = (gid, usrid, username, studentid) => {
+    modal.show();
+    document.getElementById("studentid").innerText = studentid;
+    document.getElementById("username").innerText = username;
+    document.getElementById("gid").value = gid;
+    document.getElementById("usrid").value = usrid;
 }
 
 
@@ -73,7 +92,7 @@ let showCheckin = async () => {
             }, {
                 data: null,
                 render: function (data, type, row, meta) {
-                    return `<button class="btn btn-margin btn-outline-danger" onclick="confirmDelete('${row.gid}','${row.usrid}')"><i class="bi bi-trash"></i>&nbsp;ลบ</button>`
+                    return `<button class="btn btn-margin btn-danger" onclick="deleteModal('${row.gid}','${row.usrid}','${row.username}','${row.studentid}')"><i class="bi bi-trash"></i>&nbsp;ลบ</button>`
                 }
             }
         ],

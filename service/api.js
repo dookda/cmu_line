@@ -62,7 +62,7 @@ app.post("/api/delete", (req, res) => {
 
 app.post("/api/deletecheckin", (req, res) => {
     const { gid, usrid } = req.body;
-    const sql = `DELETE FROM checkin WHERE gid=${gid} AND usrid=${usrid}`;
+    const sql = `DELETE FROM checkin WHERE gid=${gid} AND usrid='${usrid}'`;
     db.query(sql).then(r => {
         res.status(200).json({
             data: "success"

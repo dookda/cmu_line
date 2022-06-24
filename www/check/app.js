@@ -23,9 +23,9 @@ const checkIn = () => {
     const usrid = document.getElementById("usrid").value
     const studentid = document.getElementById("studentid").value
     const username = document.getElementById("username").value
-    console.log(usrid, studentid, username);
+    // console.log(usrid, studentid, username);
     axios.post(url + '/api/checkin', { usrid, studentid, username }).then(async (r) => {
-        console.log(r);
+        // console.log(r);
         modal.show();
         // getData(usrid)
         setTimeout(async () => {

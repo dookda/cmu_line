@@ -7,6 +7,26 @@ const qrcode = require('qrcode');
 const con = require("./db");
 const db = con.db;
 
+const line = require("@line/bot-sdk");
+const middleware = require('@line/bot-sdk').middleware
+const config = require("./config.json")
+const client = new line.Client(config);
+
+app.post("/api/pushmsg", (req, res) => {
+    const { usrid } = req.body;
+    const msg = [{
+        type: 'text',
+        text: 'เช็คชื่อแล้ว'
+    }, {
+        type: 'sticker',
+        packageId: '6136',
+        stickerId: "10551378"
+    }];
+
+    const userId = 'U4ed9e8cc38198119ed772a6c9e13835e'
+    client.pushMessage(userId, msg)
+});
+
 app.post("/api/getuser", (req, res) => {
     const { usrid } = req.body;
     const sql = `SELECT * FROM student WHERE usrid='${usrid}'`;
@@ -98,6 +118,19 @@ app.post("/api/checkin", (req, res) => {
     const { usrid, studentid, username } = req.body;
     const sql = `INSERT INTO checkin (usrid,studentid,username,ts) VALUES ('${usrid}','${studentid}','${username}',now())`;
     db.query(sql).then(r => {
+        const msg = [{
+            type: 'text',
+            text: `${username}`
+        }, {
+            type: 'text',
+            text: 'มาคับ!!'
+        }, {
+            type: 'sticker',
+            packageId: '8525',
+            stickerId: "16581295"
+        }];
+
+        client.pushMessage(usrid, msg);
         res.status(200).json({
             data: "success"
         })

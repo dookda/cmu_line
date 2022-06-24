@@ -17,7 +17,7 @@ var url = 'https://rti2dss.com/p3200';
 var myChart = echarts.init(document.getElementById('chart'));
 
 const getCheckin = (usrid) => {
-    axios.post('/api/getcheckinperson', { usrid }).then((r) => {
+    axios.post(url + '/api/getcheckinperson', { usrid }).then((r) => {
         console.log(r.data.data);
         let a = r.data.data.map(i => [i.ts7, 1])
         console.log(a);

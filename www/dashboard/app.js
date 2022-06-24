@@ -11,8 +11,8 @@ function initializeLiff() {
         console.log(err);
     });
 }
-// var url = 'https://rti2dss.com/p3200';
-var url = 'https://c02a-202-28-250-87.ngrok.io';
+var url = 'https://rti2dss.com/p3200';
+// var url = 'https://c02a-202-28-250-87.ngrok.io';
 let showData = async () => {
     let table = $('#tab').DataTable({
         ajax: {

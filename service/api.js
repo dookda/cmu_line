@@ -158,6 +158,17 @@ app.post("/api/getcheckin", (req, res) => {
     })
 });
 
+app.post("/api/getcheckinperson", (req, res) => {
+    const { usrid } = req.body;
+    // console.log(usrid); 
+    const sql = `SELECT TO_CHAR(ts, 'YYYY-MM-DD') as ts7 FROM checkin WHERE usrid='${usrid}' ORDER BY ts`;
+    db.query(sql).then(r => {
+        res.status(200).json({
+            data: r.rows
+        })
+    })
+});
+
 app.post("/api/genqr", (req, res) => {
     const { usrid } = req.body;
 

@@ -1,7 +1,7 @@
 
 function initializeLiff() {
     liff.init({
-        liffId: "1657043590-r00JY5BE"
+        liffId: "1657043590-yRALeNnp"
     }).then((e) => {
         if (!liff.isLoggedIn()) {
             liff.login();

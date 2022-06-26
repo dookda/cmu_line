@@ -71,7 +71,7 @@ const handleMessageEvent = async (e) => {
                     },
                     {
                         "type": "action",
-                        "imageUrl": "https://rti2dss.com/p3200/img/document.png",
+                        "imageUrl": "https://rti2dss.com/p3200/img/user.svg",
                         "action": {
                             "type": "uri",
                             "label": "ลงทะเบียน",

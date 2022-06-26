@@ -53,7 +53,7 @@ const handleMessageEvent = async (e) => {
                     },
                     {
                         "type": "action",
-                        "imageUrl": "https://rti2dss.com/p3200/img/check.png",
+                        "imageUrl": "https://rti2dss.com/p3200/img/chat.png",
                         "action": {
                             "type": "uri",
                             "label": "quiz",
@@ -62,7 +62,7 @@ const handleMessageEvent = async (e) => {
                     },
                     {
                         "type": "action",
-                        "imageUrl": "https://rti2dss.com/p3200/img/list-check.png",
+                        "imageUrl": "https://rti2dss.com/p3200/img/heart-attack.png",
                         "action": {
                             "type": "uri",
                             "label": "การเข้าเรียน",
@@ -71,7 +71,7 @@ const handleMessageEvent = async (e) => {
                     },
                     {
                         "type": "action",
-                        "imageUrl": "https://rti2dss.com/p3200/img/user.svg",
+                        "imageUrl": "https://rti2dss.com/p3200/img/verify.png",
                         "action": {
                             "type": "uri",
                             "label": "ลงทะเบียน",
@@ -80,7 +80,7 @@ const handleMessageEvent = async (e) => {
                     },
                     {
                         "type": "action",
-                        "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                        "imageUrl": "https://rti2dss.com/p3200/img/dashboard.png",
                         "action": {
                             "type": "uri",
                             "label": "dashboard",

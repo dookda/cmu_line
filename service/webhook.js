@@ -45,6 +45,7 @@ const handleMessageEvent = async (e) => {
                 "items": [
                     {
                         "type": "action",
+                        "imageUrl": "https://rti2dss.com/p3200/img/camera.png",
                         "action": {
                             "type": "camera",
                             "label": "เช็คชื่อ",

@@ -80,7 +80,7 @@ const handleMessageEvent = async (e) => {
                     },
                     {
                         "type": "action",
-                        "imageUrl": "https://rti2dss.com/p3200/img/heart.png",
+                        "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
                         "action": {
                             "type": "uri",
                             "label": "dashboard",

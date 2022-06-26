@@ -46,24 +46,53 @@ const handleMessageEvent = async (e) => {
                     {
                         "type": "action",
                         "action": {
+                            "type": "camera",
+                            "label": "Camera"
+                        }
+                    },
+                    {
+                        "type": "action",
+                        "imageUrl": "https://rti2dss.com/p3200/img/check.svg",
+                        "action": {
                             "type": "uri",
                             "label": "เช็คชื่อ",
+                            "uri": "https://rti2dss.com/p3200/check/"
+                        }
+                    },
+                    {
+                        "type": "action",
+                        "imageUrl": "https://rti2dss.com/p3200/img/check.svg",
+                        "action": {
+                            "type": "uri",
+                            "label": "quiz",
+                            "uri": "https://rti2dss.com/p3200/check/"
+                        }
+                    },
+                    {
+                        "type": "action",
+                        "imageUrl": "https://rti2dss.com/p3200/img/list-check.svg",
+                        "action": {
+                            "type": "uri",
+                            "label": "การเข้าเรียน",
                             "uri": "https://rti2dss.com/p3200/checkday/"
                         }
                     },
                     {
                         "type": "action",
+                        "imageUrl": "https://rti2dss.com/p3200/img/document.svg",
                         "action": {
                             "type": "uri",
-                            "label": "dashboard",
-                            "uri": "https://rti2dss.com/p3200/dashboard/"
+                            "label": "ลงทะเบียน",
+                            "uri": "https://rti2dss.com/p3200/profile/"
                         }
                     },
                     {
                         "type": "action",
+                        "imageUrl": "https://rti2dss.com/p3200/img/heart.svg",
                         "action": {
-                            "type": "camera",
-                            "label": "Camera"
+                            "type": "uri",
+                            "label": "dashboard",
+                            "uri": "https://rti2dss.com/p3200/dashboard/"
                         }
                     },
                 ]

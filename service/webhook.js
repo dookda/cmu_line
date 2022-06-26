@@ -40,7 +40,7 @@ const handleMessageEvent = async (e) => {
 
         var msg = {
             "type": "text",
-            "text": "Hello Quick Reply!",
+            "text": "",
             "quickReply": {
                 "items": [
                     {

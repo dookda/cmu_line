@@ -120,7 +120,7 @@ const showCheckinChart = () => {
 
         const option = {
             title: {
-                top: 30,
+                top: 20,
                 left: 'center',
                 text: 'Daily Count (คน)'
             },
@@ -134,7 +134,7 @@ const showCheckinChart = () => {
                 top: 65
             },
             calendar: {
-                top: 120,
+                top: 100,
                 left: 30,
                 right: 30,
                 cellSize: ['auto', 13],

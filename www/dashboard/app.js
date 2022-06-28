@@ -12,7 +12,7 @@ function initializeLiff() {
     });
 }
 var url = 'https://rti2dss.com/p3200';
-// var url = 'https://c02a-202-28-250-87.ngrok.io';
+// var url = 'https://e40b-202-28-250-93.ngrok.io';
 let showData = async () => {
     let table = $('#tab').DataTable({
         ajax: {
@@ -70,7 +70,7 @@ const deleteModal = (gid, usrid, username, studentid) => {
 }
 
 
-let showCheckin = async () => {
+let showCheckinTable = async () => {
     let table = $('#checkin').DataTable({
         ajax: {
             type: 'POST',
@@ -106,10 +106,62 @@ let showCheckin = async () => {
     });
 }
 
+var dom = document.getElementById('chart');
+var myChart = echarts.init(dom, null, {
+    renderer: 'canvas',
+    useDirtyRect: false
+});
+
+const showCheckinChart = () => {
+    axios.post(url + '/api/getcheckinall').then((r) => {
+        console.log(r.data.data);
+        let a = r.data.data.map(i => [i.ts, Number(i.cnt)])
+        console.log(a);
+
+        const option = {
+            title: {
+                top: 30,
+                left: 'center',
+                text: 'Daily Count (คน)'
+            },
+            tooltip: {},
+            visualMap: {
+                min: 0,
+                max: 34,
+                type: 'piecewise',
+                orient: 'horizontal',
+                left: 'center',
+                top: 65
+            },
+            calendar: {
+                top: 120,
+                left: 30,
+                right: 30,
+                cellSize: ['auto', 13],
+                range: ['2022-06', '2022-11'],
+                itemStyle: {
+                    borderWidth: 0.5
+                },
+                yearLabel: { show: false }
+            },
+            series: {
+                type: 'heatmap',
+                coordinateSystem: 'calendar',
+                data: a
+            }
+        };
+
+        myChart.setOption(option);
+        window.addEventListener('resize', myChart.resize);
+    })
+}
+
+
 const checkAdmin = (userId) => {
     if (userId == "U4ed9e8cc38198119ed772a6c9e13835e") {
         showData()
-        showCheckin()
+        showCheckinTable()
+        showCheckinChart()
     }
 }
 

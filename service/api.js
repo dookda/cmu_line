@@ -169,6 +169,19 @@ app.post("/api/getcheckinperson", (req, res) => {
     })
 });
 
+app.post("/api/getcheckinall", (req, res) => {
+    // console.log(usrid); 
+    const sql = `SELECT a.ts, COUNT(a.ts ) as cnt
+        FROM (SELECT TO_CHAR(ts, 'YYYY-MM-DD') ts FROM checkin ) a
+        GROUP BY a.ts
+        ORDER BY a.ts`;
+    db.query(sql).then(r => {
+        res.status(200).json({
+            data: r.rows
+        })
+    })
+});
+
 app.post("/api/genqr", (req, res) => {
     const { usrid } = req.body;
 

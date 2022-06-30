@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เช็คชื่อ</title>
+    <link href="//cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <section class="mt-120" id="home">
+        <div class="container px-4 px-lg-5">
+            <div class="row mt-2 d-flex align-items-center">
+                <div class="form-inner mb-5">
+                    <div class="float-right">
+                        <img alt="" width="40px" class="rounded" id="profile">&nbsp;&nbsp;&nbsp;<span
+                            id="displayName"></span>
+                    </div>
+
+                    <input type="hidden" id="usrid">
+                    <input type="hidden" id="studentid">
+                    <input type="hidden" id="username">
+                    <!-- <img id="qr" /> -->
+                    <hr>
+                    <div class="mb-3">
+                        <div id="checkname">
+                            <span id="usernametxt"></span>
+                            <p></p>
+                            <button class="btn btn-success" onclick="checkIn()"><i
+                                    class="bi bi-person-circle"></i>&nbsp;&nbsp;มาครับ</button>
+                        </div>
+                        <div id="register">
+                            <label for="">เรายังไม่ได้ลงทะเบียน</label>
+                            <p></p>
+                            <p>
+                                <a class="btn btn-light" href="https://liff.line.me/1657043590-ZbnN3v9J"><i
+                                        class="bi bi-person-circle"></i>&nbsp;&nbsp;ลงทะเบียน</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    เช็คชื่อแล้ว
+                </div>
+            </div>
+        </div>
+    </div>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="//unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>

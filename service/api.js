@@ -9,7 +9,8 @@ const db = con.db;
 
 const line = require("@line/bot-sdk");
 const middleware = require('@line/bot-sdk').middleware
-const config = require("./config.json")
+const config = require("./config.json");
+const axios = require('axios');
 const client = new line.Client(config);
 
 app.post("/api/pushmsg", (req, res) => {
@@ -181,6 +182,34 @@ app.post("/api/getcheckinall", (req, res) => {
         })
     })
 });
+
+app.post("/api/checkquiz", (req, res) => {
+    const { usrid } = req.body;
+    const quizId = "q1";
+    const gooKey = 'AIzaSyDBvLZMFRD_cQB-O9tvof3EpF7_KQwMK0w';
+    const sheetId = '1k6zlZuC-PpZvwvG9KGT-xLWkc9rjXwzof6Cu0MSErV4';
+    axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Form Responses 1?alt=json&key=${gooKey}`).then(async (r) => {
+        await db.query(`DELETE FROM quizscore WHERE quizid='${quizId}'`);
+        let sql = "";
+        await r.data.values.forEach((v, i) => {
+            if (i !== 0) {
+                const scr = v[1].split(" ")
+                sql += `INSERT INTO quizscore (quizid,usrid,soretxt,sorenum,ts)VALUES('${quizId}','${v[2]}','${v[1]}',${scr[0]},'${v[0]}');`;
+            }
+        })
+        await db.query(sql).then(r => {
+            console.log(sql);
+            res.status(200).json({
+                data: "success"
+            })
+        })
+    })
+})
+
+app.post("/api/getscore", (req, res) => {
+    const { usrid, quizId } = req.body;
+    const sql = `SELECT * FROM quizscore WHERE usrid='${usrid}' AND quizid='${quizId}'`
+})
 
 app.post("/api/genqr", (req, res) => {
     const { usrid } = req.body;

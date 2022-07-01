@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
     <section class="mt-120" id="home">
         <div class="container px-4 px-lg-5">
             <div class="row mt-2 d-flex align-items-center">
@@ -33,20 +32,27 @@
                     <!-- <img id="qr" /> -->
                     <hr>
                     <div class="mb-3">
-                        <div id="checkname">
+                        <div id="quiz">
                             <span id="usernametxt"></span>
                             <p></p>
-                            <button class="btn btn-success" onclick="checkIn()"><i
-                                    class="bi bi-person-circle"></i>&nbsp;&nbsp;มาครับ</button>
-                        </div>
-                        <div id="register">
-                            <label for="">เรายังไม่ได้ลงทะเบียน</label>
+                            <button class="btn btn-success" onclick="gotoQuiz(1)"><i
+                                    class="bi bi-person-circle"></i>&nbsp;&nbsp;คำถามท้ายชั่วโมง 1</button>
                             <p></p>
-                            <p>
-                                <a class="btn btn-light" href="https://liff.line.me/1657043590-ZbnN3v9J"><i
-                                        class="bi bi-person-circle"></i>&nbsp;&nbsp;ลงทะเบียน</a>
-                            </p>
+                            <button class="btn btn-success" onclick="gotoQuiz(2)"><i
+                                    class="bi bi-person-circle"></i>&nbsp;&nbsp;คำถามท้ายชั่วโมง 2</button>
+                            <p></p>
+                            <button class="btn btn-success" onclick="gotoQuiz(3)"><i
+                                    class="bi bi-person-circle"></i>&nbsp;&nbsp;คำถามท้ายชั่วโมง 3</button>
+                            <p></p>
+                            <button class="btn btn-success" onclick="gotoQuiz(4)"><i
+                                    class="bi bi-person-circle"></i>&nbsp;&nbsp;คำถามท้ายชั่วโมง 4</button>
+                            <p></p>
+                            <button class="btn btn-success" onclick="gotoQuiz(5)"><i
+                                    class="bi bi-person-circle"></i>&nbsp;&nbsp;คำถามท้ายชั่วโมง 5</button>
                         </div>
+
+
+
                     </div>
                 </div>
             </div>
@@ -57,7 +63,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    เช็คชื่อแล้ว
+                    quiz
                 </div>
             </div>
         </div>

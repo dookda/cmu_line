@@ -1,6 +1,6 @@
 function initializeLiff() {
     liff.init({
-        liffId: "1657043590-BOEgp5Yl"
+        liffId: "1657043590-k8L2m41N"
     }).then((e) => {
         if (!liff.isLoggedIn()) {
             liff.login();
@@ -12,45 +12,48 @@ function initializeLiff() {
     });
 }
 
-var url = 'https://rti2dss.com/p3200';
-// var url = 'https://c02a-202-28-250-87.ngrok.io';
+// var url = 'https://rti2dss.com/p3200';
+var url = 'https://e40b-202-28-250-93.ngrok.io';
 
 let modal = new bootstrap.Modal(document.getElementById('modal'), {
     keyboard: false
 })
 
-const checkIn = () => {
-    const usrid = document.getElementById("usrid").value
-    const studentid = document.getElementById("studentid").value
-    const username = document.getElementById("username").value
-    // console.log(usrid, studentid, username);
-    var id = '1Z0EskTZ7FtyQnOPyhyIfbx6VAh6uSjqIDRSKyan8ZPM';
-    var gid = '0';
-    var url = 'https://docs.google.com/spreadsheets/d/' + id + '/gviz/tq?tqx=out:json&tq&gid=' + gid;
-    fetch(url)
-        .then(response => response.text())
-        .then(data => console.log(JSON.parse(data.slice(47, -2))));
+const quiz = document.getElementById('quiz');
+quiz.style.display = 'none';
+quiz.style.display = 'block';
+
+// form
+const formId1 = '1FAIpQLSeIG5QqRYGdQ_MMYtfRjglSaj19uJw18MU3_X_ptoi0OmCzbg';
+const formId2 = '1FAIpQLSe_poWTGoDL9T-ozU9e9KIdImgVHYGW0SQASgTWkYhxsPGiVw';
+const formId3 = '1FAIpQLSdy3rVpSl66gQ6jevJXB35drQnfhIqcm88J4t0V0rILd9m4UQ';
+const formId4 = '1FAIpQLScsgS4B0Ux0m8zFlHIrOKz9Xxcqk7ei7rIH8L-NNVFOeWT3NQ';
+const formId5 = '1FAIpQLSeS5rGzvbTpV53MHFwiVovi0wLCxbmfcOKn_RWaD3fpKJrtwg';
+
+
+
+const gotoQuiz = (formId) => {
+    const usrid = document.getElementById('usrid').value;
+    if (formId == 1) {
+        location.href = `https://docs.google.com/forms/d/e/${formId1}/viewform?usp=pp_url&entry.28548348=${usrid}`
+    } else if (formId == 2) {
+        location.href = `https://docs.google.com/forms/d/e/${formId2}/viewform?usp=pp_url&entry.28548348=${usrid}`
+    } else if (formId == 3) {
+        location.href = `https://docs.google.com/forms/d/e/${formId3}/viewform?usp=pp_url&entry.28548348=${usrid}`
+    } else if (formId == 4) {
+        location.href = `https://docs.google.com/forms/d/e/${formId4}/viewform?usp=pp_url&entry.28548348=${usrid}`
+    } else if (formId == 5) {
+        location.href = `https://docs.google.com/forms/d/e/${formId5}/viewform?usp=pp_url&entry.28548348=${usrid}`
+    }
+
 }
-
-checkIn()
-
-const checkname = document.getElementById('checkname');
-const register = document.getElementById('register');
-register.style.display = 'none';
-checkname.style.display = 'none';
 
 const getUser = async (usrid) => {
     axios.post(url + '/api/getuser', { usrid }).then(async (r) => {
-        if (r.data.data.length) {
-            // console.log(r.data.data[0]);
-            checkname.style.display = 'block';
-            document.getElementById('usernametxt').innerHTML = r.data.data[0].username;
-            document.getElementById("username").value = r.data.data[0].username;
-            document.getElementById("studentid").value = r.data.data[0].studentid;
-            // await liff.closeWindow()
-        } else {
-            register.style.display = 'block';
-        }
+        document.getElementById('usernametxt').innerHTML = r.data.data[0].username;
+        document.getElementById("username").value = r.data.data[0].username;
+        document.getElementById("studentid").value = r.data.data[0].studentid;
+        // await liff.closeWindow()
     })
 }
 
@@ -63,5 +66,6 @@ const getUserid = async () => {
     // console.log(profile);
     getUser(await profile.userId)
 }
-// initializeLiff()
+
+initializeLiff()
 

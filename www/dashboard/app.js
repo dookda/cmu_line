@@ -11,8 +11,8 @@ function initializeLiff() {
         console.log(err);
     });
 }
-var url = 'https://rti2dss.com/p3200';
-// var url = 'https://e40b-202-28-250-93.ngrok.io';
+// var url = 'https://rti2dss.com/p3200';
+var url = 'https://e40b-202-28-250-93.ngrok.io';
 let showData = async () => {
     let table = $('#tab').DataTable({
         ajax: {
@@ -164,6 +164,35 @@ const checkAdmin = (userId) => {
         showCheckinChart()
     }
 }
+
+const assingQuiz = () => {
+
+}
+
+const checkQuiz = async (quiz) => {
+    let quizObj = {};
+
+    if (quiz == 'q1') {
+        quizObj.quizId = quiz;
+        quizObj.sheetId = '1k6zlZuC-PpZvwvG9KGT-xLWkc9rjXwzof6Cu0MSErV4';
+    } else if (quiz == 'q2') {
+        quizObj.quizId = quiz;
+        quizObj.sheetId = '1U5g_NC_9-zXy_cVNJucnuL7DYqb3VhRBpWNIsbu6cRc';
+    } else if (quiz == 'q3') {
+        quizObj.quizId = quiz;
+        quizObj.sheetId = '185kM5h3PZ3aqoMIBd5UitXx7Dsx1X4ye8k8_uM-cy1M';
+    } else if (quiz == 'q4') {
+        quizObj.quizId = quiz;
+        quizObj.sheetId = '1JC9ghqf6ZfSpn8TUTJNnyEGCh_HdpsVaBCgHncIA9KQ';
+    } else if (quiz == 'q5') {
+        quizObj.quizId = quiz;
+        quizObj.sheetId = '1KCaGOFuQmBBz7Mc15x6FSBhqG7NVdQGjYqLH3Q17ZZs';
+    }
+    await axios.post(url + '/api/checkquiz', quizObj).then(r => {
+        console.log(r);
+    })
+}
+
 
 async function getUserid() {
     const profile = await liff.getProfile();

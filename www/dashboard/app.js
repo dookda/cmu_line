@@ -1,3 +1,4 @@
+
 function initializeLiff() {
     liff.init({
         liffId: "1657043590-r00JY5BE"
@@ -114,10 +115,9 @@ var myChart = echarts.init(dom, null, {
 
 const showCheckinChart = () => {
     axios.post(url + '/api/getcheckinall').then((r) => {
-        console.log(r.data.data);
+        // console.log(r.data.data);
         let a = r.data.data.map(i => [i.ts, Number(i.cnt)])
-        console.log(a);
-
+        // console.log(a);
         const option = {
             title: {
                 top: 20,
@@ -162,37 +162,35 @@ const checkAdmin = (userId) => {
         showData()
         showCheckinTable()
         showCheckinChart()
+        loadQuiz()
     }
 }
 
-const assingQuiz = () => {
-
-}
-
-const checkQuiz = async (quiz) => {
-    let quizObj = {};
-
-    if (quiz == 'q1') {
-        quizObj.quizId = quiz;
-        quizObj.sheetId = '1k6zlZuC-PpZvwvG9KGT-xLWkc9rjXwzof6Cu0MSErV4';
-    } else if (quiz == 'q2') {
-        quizObj.quizId = quiz;
-        quizObj.sheetId = '1U5g_NC_9-zXy_cVNJucnuL7DYqb3VhRBpWNIsbu6cRc';
-    } else if (quiz == 'q3') {
-        quizObj.quizId = quiz;
-        quizObj.sheetId = '185kM5h3PZ3aqoMIBd5UitXx7Dsx1X4ye8k8_uM-cy1M';
-    } else if (quiz == 'q4') {
-        quizObj.quizId = quiz;
-        quizObj.sheetId = '1JC9ghqf6ZfSpn8TUTJNnyEGCh_HdpsVaBCgHncIA9KQ';
-    } else if (quiz == 'q5') {
-        quizObj.quizId = quiz;
-        quizObj.sheetId = '1KCaGOFuQmBBz7Mc15x6FSBhqG7NVdQGjYqLH3Q17ZZs';
-    }
-    await axios.post(url + '/api/checkquiz', quizObj).then(r => {
-        console.log(r);
+const loadQuiz = () => {
+    axios.post(url + "/api/loadquiz/", { usrid: "usrid" }).then(async (r) => {
+        r.data.data.map(i => {
+            document.getElementById(`formId${i.gid}`).value = i.formid;
+            document.getElementById(`sheetId${i.gid}`).value = i.sheetid;
+        })
     })
 }
 
+const updateQuiz = (gid) => {
+    const formid = document.getElementById(`formId${gid}`).value;
+    const sheetid = document.getElementById(`sheetId${gid}`).value;
+    console.log(formid, sheetid);
+    axios.post(url + "/api/updatequiz/", { formid, sheetid, gid }).then(async (r) => {
+        console.log(r.data);
+    })
+}
+
+const checkQuiz = async (gid) => {
+    const quizId = `q${gid}`;
+    const sheetId = document.getElementById(`sheetId${gid}`).value;
+    await axios.post(url + '/api/checkquiz', { quizId, sheetId }).then(r => {
+        console.log(r);
+    })
+}
 
 async function getUserid() {
     const profile = await liff.getProfile();

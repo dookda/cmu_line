@@ -68,25 +68,101 @@
 
                     <div class="shadow p-3 bg-body rounded mt-3 mb-5">
                         <div class="card-body">
-                            <div id="">ออกข้อสอบ</div>
-                            <hr>
-                            <div id="">
-                                ตรวจข้อสอบ <p></p>
-                                <button class="btn btn-success" onclick="checkQuiz('q1')"><i
-                                        class="bi bi-journal-text"></i>&nbsp;&nbsp;quiz 1</button>
-                                <p></p>
-                                <button class="btn btn-success" onclick="checkQuiz('q2')"><i
-                                        class="bi bi-journal-text"></i>&nbsp;&nbsp;quiz 2</button>
-                                <p></p>
-                                <button class="btn btn-success" onclick="checkQuiz('q3')"><i
-                                        class="bi bi-journal-text"></i>&nbsp;&nbsp;quiz 3</button>
-                                <p></p>
-                                <button class="btn btn-success" onclick="checkQuiz('q4')"><i
-                                        class="bi bi-journal-text"></i>&nbsp;&nbsp;quiz 4</button>
-                                <p></p>
-                                <button class="btn btn-success" onclick="checkQuiz('q5')"><i
-                                        class="bi bi-journal-text"></i>&nbsp;&nbsp;quiz 5</button>
+                            <div id="">ออก-ตรวจ คำถามท้ายชั่วโมง</div>
+                            <div class="mb-3">
+                                <div class="row mt-1 mb-1">
+                                    <div class="col-sm-6">
+                                        <label for="formId">quiz form 1</label>
+                                        <input type="text" class="form-control" id="formId1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="sheetId">response sheet 1</label>
+                                        <input type="text" class="form-control" id="sheetId1">
+                                    </div>
+
+                                </div>
+                                <button class="btn btn-light" onclick="updateQuiz(1)"><i
+                                        class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;update</button>
+
+                                <button class="btn btn-success" onclick="checkQuiz('1')"><i
+                                        class="bi bi-journal-text"></i>&nbsp;&nbsp;ตรวจ quiz 1</button>
                             </div>
+                            <hr>
+                            <div class="mb-3">
+                                <div class="row mt-1 mb-1">
+                                    <div class="col-sm-6">
+                                        <label for="formId">quiz form 2</label>
+                                        <input type="text" class="form-control" id="formId2">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="sheetId">response sheet 2</label>
+                                        <input type="text" class="form-control" id="sheetId2">
+                                    </div>
+                                </div>
+                                <button class="btn btn-light" onclick="updateQuiz(2)"><i
+                                        class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;update</button>
+
+                                <button class="btn btn-success" onclick="checkQuiz('2')"><i
+                                        class="bi bi-journal-text"></i>&nbsp;&nbsp;ตรวจ quiz 2</button>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <div class="row mt-1 mb-1">
+                                    <div class="col-auto">
+                                        <label for="formId">quiz form 3</label>
+                                        <input type="text" class="form-control" id="formId3">
+                                    </div>
+                                    <div class="col-auto">
+                                        <label for="sheetId">response sheet 3</label>
+                                        <input type="text" class="form-control" id="sheetId3">
+                                    </div>
+                                </div>
+                                <button class="btn btn-light" onclick="updateQuiz(3)"><i
+                                        class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;update</button>
+
+                                <button class="btn btn-success" onclick="checkQuiz('3')"><i
+                                        class="bi bi-journal-text"></i>&nbsp;&nbsp;ตรวจ quiz 3</button>
+
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <div class="row mt-1 mb-1">
+                                    <div class="col-auto">
+                                        <label for="formId">quiz form 4</label>
+                                        <input type="text" class="form-control" id="formId4">
+                                    </div>
+                                    <div class="col-auto">
+                                        <label for="sheetId">response sheet 4</label>
+                                        <input type="text" class="form-control" id="sheetId4">
+                                    </div>
+                                </div>
+                                <button class="btn btn-light" onclick="updateQuiz(4)"><i
+                                        class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;update</button>
+
+                                <button class="btn btn-success" onclick="checkQuiz('4')"><i
+                                        class="bi bi-journal-text"></i>&nbsp;&nbsp;ตรวจ quiz 4</button>
+
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <div class="row mt-1 mb-1">
+                                    <div class="col-auto">
+                                        <label for="formId">quiz form 5</label>
+                                        <input type="text" class="form-control" id="formId5">
+                                    </div>
+                                    <div class="col-auto">
+                                        <label for="sheetId">response sheet 5</label>
+                                        <input type="text" class="form-control" id="sheetId5">
+                                    </div>
+                                </div>
+                                <button class="btn btn-light" onclick="updateQuiz(5)"><i
+                                        class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;update</button>
+                                <button class="btn btn-success" onclick="checkQuiz('5')"><i
+                                        class="bi bi-journal-text"></i>&nbsp;&nbsp;ตรวจ quiz 5</button>
+                            </div>
+
+                            <hr>
+
 
                         </div>
                     </div>

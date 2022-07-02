@@ -22,3 +22,9 @@ body {
     height: 35vh;
     overflow: hidden;
 }
+
+.btn-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

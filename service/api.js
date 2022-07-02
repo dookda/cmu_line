@@ -183,11 +183,34 @@ app.post("/api/getcheckinall", (req, res) => {
     })
 });
 
-app.post("/api/checkquiz", (req, res) => {
+
+app.post('/api/loadquiz/', async (req, res) => {
     const { usrid } = req.body;
-    const quizId = "q1";
+    const sql = "SELECT * FROM quizTable";
+    await db.query(sql).then(r => {
+        // console.log(r);
+        res.status(200).json({
+            data: r.rows
+        })
+    })
+})
+
+app.post('/api/updatequiz', async (req, res) => {
+    const { formid, sheetid, gid } = req.body;
+    const sql = `UPDATE quiztable SET formid='${formid}', sheetid='${sheetid}' WHERE gid=${gid}`;
+    console.log(sql);
+    await db.query(sql).then(r => {
+        res.status(200).json({
+            data: "success"
+        })
+    })
+})
+
+app.post("/api/checkquiz", (req, res) => {
+    const { quizId, sheetId, usrid } = req.body;
+    // const quizId = "q1";
     const gooKey = 'AIzaSyDBvLZMFRD_cQB-O9tvof3EpF7_KQwMK0w';
-    const sheetId = '1k6zlZuC-PpZvwvG9KGT-xLWkc9rjXwzof6Cu0MSErV4';
+    // const sheetId = '1k6zlZuC-PpZvwvG9KGT-xLWkc9rjXwzof6Cu0MSErV4';
     axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Form Responses 1?alt=json&key=${gooKey}`).then(async (r) => {
         await db.query(`DELETE FROM quizscore WHERE quizid='${quizId}'`);
         let sql = "";

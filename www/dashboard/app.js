@@ -169,6 +169,7 @@ const checkAdmin = (userId) => {
 const loadQuiz = () => {
     axios.post(url + "/api/loadquiz/", { usrid: "usrid" }).then(async (r) => {
         r.data.data.map(i => {
+            document.getElementById(`title${i.gid}`).value = i.title;
             document.getElementById(`formId${i.gid}`).value = i.formid;
             document.getElementById(`sheetId${i.gid}`).value = i.sheetid;
         })
@@ -176,10 +177,11 @@ const loadQuiz = () => {
 }
 
 const updateQuiz = (gid) => {
+    const title = document.getElementById(`title${gid}`).value;
     const formid = document.getElementById(`formId${gid}`).value;
     const sheetid = document.getElementById(`sheetId${gid}`).value;
-    console.log(formid, sheetid);
-    axios.post(url + "/api/updatequiz/", { formid, sheetid, gid }).then(async (r) => {
+    console.log(formid, sheetid, title);
+    axios.post(url + "/api/updatequiz/", { formid, sheetid, gid, title }).then(async (r) => {
         console.log(r.data);
     })
 }

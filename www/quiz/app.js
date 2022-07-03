@@ -42,7 +42,7 @@ const loadQuiz = (usrid) => {
 
 const getScore = (usrid, quizId) => {
     // const usrid = document.getElementById('usrid').value;
-    axios.post("/api/getscore", { usrid, quizId }).then(r => {
+    axios.post(url + "/api/getscore", { usrid, quizId }).then(r => {
         console.log(r.data.data);
         r.data.data.map(i => {
             document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">แบบทดสอบหลังเรียน ${i.quizid} คะแนน ${i.soretxt} วันที่ ${i.dt}</div>`

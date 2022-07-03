@@ -221,7 +221,7 @@ app.post("/api/checkquiz", (req, res) => {
             }
         })
         await db.query(sql).then(r => {
-            console.log(sql);
+            // console.log(sql);
             res.status(200).json({
                 data: "success"
             })
@@ -229,9 +229,16 @@ app.post("/api/checkquiz", (req, res) => {
     })
 })
 
-app.post("/api/getscore", (req, res) => {
-    const { usrid, quizId } = req.body;
-    const sql = `SELECT * FROM quizscore WHERE usrid='${usrid}' AND quizid='${quizId}'`
+app.post("/api/getscore", async (req, res) => {
+    const { usrid } = req.body;
+    const sql = `SELECT *, TO_CHAR(ts, 'DD-MM-YYYY') as dt FROM quizscore WHERE usrid='${usrid}' ORDER BY quizid ASC`;
+
+    await db.query(sql).then(r => {
+        console.log(sql);
+        res.status(200).json({
+            data: r.rows
+        })
+    })
 })
 
 app.post("/api/genqr", (req, res) => {

@@ -172,6 +172,7 @@ const loadQuiz = () => {
             document.getElementById(`title${i.gid}`).value = i.title;
             document.getElementById(`formId${i.gid}`).value = i.formid;
             document.getElementById(`sheetId${i.gid}`).value = i.sheetid;
+            i.status == true ? document.querySelector(`#status${i.gid}`).checked = true : document.querySelector(`#status${i.gid}`).checked = false;
         })
     })
 }
@@ -180,8 +181,9 @@ const updateQuiz = (gid) => {
     const title = document.getElementById(`title${gid}`).value;
     const formid = document.getElementById(`formId${gid}`).value;
     const sheetid = document.getElementById(`sheetId${gid}`).value;
-    console.log(formid, sheetid, title);
-    axios.post(url + "/api/updatequiz/", { formid, sheetid, gid, title }).then(async (r) => {
+    const status = document.querySelector(`#status${gid}`).checked;
+    console.log(formid, sheetid, title, status);
+    axios.post(url + "/api/updatequiz/", { formid, sheetid, gid, title, status }).then(async (r) => {
         console.log(r.data);
     })
 }

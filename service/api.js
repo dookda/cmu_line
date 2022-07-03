@@ -196,8 +196,8 @@ app.post('/api/loadquiz/', async (req, res) => {
 })
 
 app.post('/api/updatequiz', async (req, res) => {
-    const { formid, sheetid, gid, title } = req.body;
-    const sql = `UPDATE quiztable SET formid='${formid}', sheetid='${sheetid}', title='${title}', ts=now() WHERE gid=${gid}`;
+    const { formid, sheetid, gid, title, status } = req.body;
+    const sql = `UPDATE quiztable SET formid='${formid}', sheetid='${sheetid}', title='${title}', status=${status}, ts=now() WHERE gid=${gid}`;
     // console.log(sql);
     await db.query(sql).then(r => {
         res.status(200).json({

@@ -27,10 +27,11 @@ const loadQuiz = () => {
     const usrid = document.getElementById('usrid').value;
     axios.post(url + "/api/loadquiz/").then(r => {
         r.data.data.map(i => {
-            // document.getElementById(`q${i.gid}`).href = `https://docs.google.com/forms/d/e/${i.formid}/viewform?usp=pp_url&entry.28548348=${usrid}`
-            document.getElementById('quiz').innerHTML += `<a class="btn btn-success" id="q5" 
-            href="https://docs.google.com/forms/d/e/${i.formid}/viewform?usp=pp_url&entry.28548348=${usrid}"><i
-            class="bi bi-person-circle"></i>&nbsp;&nbsp;คำถามท้ายชั่วโมง ${i.gid}</a><p></p>`
+            if (i.status == true) {
+                document.getElementById('quiz').innerHTML += `<a class="btn btn-success" id="q5" 
+                href="https://docs.google.com/forms/d/e/${i.formid}/viewform?usp=pp_url&entry.28548348=${usrid}"><i
+                class="bi bi-person-circle"></i>&nbsp;&nbsp;คำถามท้ายชั่วโมง ${i.title}</a><p></p>`
+            }
         })
     })
 }

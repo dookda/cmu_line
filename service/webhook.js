@@ -58,7 +58,7 @@ const handleMessageEvent = async (e) => {
                         "action": {
                             "type": "uri",
                             "label": "quiz",
-                            "uri": "https://rti2dss.com/p3200/check/"
+                            "uri": "https://rti2dss.com/p3200/quiz/"
                         }
                     },
                     {

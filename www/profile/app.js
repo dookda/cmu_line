@@ -35,7 +35,7 @@ let updateUser = async () => {
             displayname: document.getElementById("displayName").value
         }
     }
-    console.log(obj);
+    // console.log(obj);
     axios.post(url + "/api/updateuser", obj).then((r) => {
         // console.log(r);
         modal.show();

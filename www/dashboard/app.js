@@ -49,8 +49,16 @@ let modal = new bootstrap.Modal(document.getElementById('modal'), {
     keyboard: false
 })
 
+let modalUpdate = new bootstrap.Modal(document.getElementById('modalupdate'), {
+    keyboard: false
+})
+
 const closeModal = () => {
     modal.hide();
+}
+
+const closeModalUpdate = () => {
+    modalUpdate.hide();
 }
 
 const confirmDelete = () => {
@@ -184,7 +192,11 @@ const updateQuiz = (gid) => {
     const status = document.querySelector(`#status${gid}`).checked;
     console.log(formid, sheetid, title, status);
     axios.post(url + "/api/updatequiz/", { formid, sheetid, gid, title, status }).then(async (r) => {
-        console.log(r.data);
+        // console.log(r.data);
+        modalUpdate.show();
+        setTimeout(async () => {
+            modalUpdate.hide();
+        }, 2000);
     })
 }
 

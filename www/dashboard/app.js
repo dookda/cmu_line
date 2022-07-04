@@ -204,7 +204,11 @@ const checkQuiz = async (gid) => {
     const quizId = `q${gid}`;
     const sheetId = document.getElementById(`sheetId${gid}`).value;
     await axios.post(url + '/api/checkquiz', { quizId, sheetId }).then(r => {
-        console.log(r);
+        // console.log(r);
+        modalUpdate.show();
+        setTimeout(async () => {
+            modalUpdate.hide();
+        }, 2000);
     })
 }
 

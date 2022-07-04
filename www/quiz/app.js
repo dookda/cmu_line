@@ -45,7 +45,7 @@ const getScore = (usrid, quizId) => {
     axios.post(url + "/api/getscore", { usrid, quizId }).then(r => {
         console.log(r.data.data);
         r.data.data.map(i => {
-            document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">แบบทดสอบหลังเรียน ${i.quizid} คะแนน ${i.soretxt} วันที่ ${i.dt}</div>`
+            document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">แบบทดสอบหลังเรียน ${i.quizid} วันที่ ${i.dt} <br>คะแนน ${i.soretxt}</div>`
         })
     });
 }

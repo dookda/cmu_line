@@ -190,7 +190,7 @@ const updateQuiz = (gid) => {
     const formid = document.getElementById(`formId${gid}`).value;
     const sheetid = document.getElementById(`sheetId${gid}`).value;
     const status = document.querySelector(`#status${gid}`).checked;
-    console.log(formid, sheetid, title, status);
+    // console.log(formid, sheetid, title, status);
     axios.post(url + "/api/updatequiz/", { formid, sheetid, gid, title, status }).then(async (r) => {
         // console.log(r.data);
         modalUpdate.show();

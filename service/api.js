@@ -209,6 +209,7 @@ app.post('/api/updatequiz', async (req, res) => {
 app.post("/api/checkquiz", (req, res) => {
     const { quizId, sheetId, usrid } = req.body;
     // const quizId = "q1";
+    console.log(quizId);
     const gooKey = 'AIzaSyDBvLZMFRD_cQB-O9tvof3EpF7_KQwMK0w';
     // const sheetId = '1k6zlZuC-PpZvwvG9KGT-xLWkc9rjXwzof6Cu0MSErV4';
     axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Form Responses 1?alt=json&key=${gooKey}`).then(async (r) => {

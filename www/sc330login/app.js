@@ -1,5 +1,5 @@
 
-var url = 'https://rti2dss/p3200';
+var url = 'https://rti2dss.com/p3200';
 
 let logIn = () => {
     const std_id = document.getElementById('std_id').value;

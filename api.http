@@ -9,7 +9,7 @@
 
 ###
 
- POST http://localhost:3200/api/score330login/ HTTP/1.1
+ POST https://rti2dss.com/p3200/api/score330login/ HTTP/1.1
  Content-Type: application/json
 
 {    

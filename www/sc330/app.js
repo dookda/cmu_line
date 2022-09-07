@@ -1,5 +1,5 @@
 
-var url = 'https://rti2dss/p3200';
+var url = 'https://rti2dss.com/p3200';
 
 let std_id = sessionStorage.getItem("std_id");
 console.log(std_id);

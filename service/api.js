@@ -6,6 +6,7 @@ const qrcode = require('qrcode');
 
 const con = require("./db");
 const db = con.db;
+const db330 = con.db330;
 
 const line = require("@line/bot-sdk");
 const middleware = require('@line/bot-sdk').middleware
@@ -252,5 +253,30 @@ app.post("/api/genqr", (req, res) => {
     //     console.log(code)
     // });
 })
+
+
+app.post("/api/score330", (req, res) => {
+    const { stdid } = req.body;
+    let sql = `select * from public.score330 where std_id = ${stdid} `
+    db330.query(sql).then(r => {
+        console.log(sql);
+        res.status(200).json({
+            data: r.rows
+        })
+    })
+})
+
+app.post("/api/score330login", (req, res) => {
+    const { std_id, pass } = req.body;
+    console.log(std_id, pass);
+    let sql = `select std_id from public.score330 where std_id = ${std_id} and pass='${pass}' `
+    db330.query(sql).then(r => {
+        console.log(r.rows);
+        res.status(200).json({
+            data: r.rows
+        })
+    })
+})
+
 
 module.exports = app;

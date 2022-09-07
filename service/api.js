@@ -3,16 +3,25 @@ const moment = require('moment');
 const app = express.Router();
 const _ = require('lodash');
 const qrcode = require('qrcode');
-
+const { Pool } = require('pg');
 const con = require("./db");
 const db = con.db;
-const db330 = con.db330;
+// const db330 = con.db330;
 
 const line = require("@line/bot-sdk");
 const middleware = require('@line/bot-sdk').middleware
 const config = require("./config.json");
 const axios = require('axios');
 const client = new line.Client(config);
+
+
+let db330 = new Pool({
+    user: 'postgres',
+    host: '119.59.125.134',
+    database: 'cmu',
+    password: '',
+    port: 5432
+})
 
 app.post("/api/pushmsg", (req, res) => {
     const { usrid } = req.body;

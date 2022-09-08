@@ -1,4 +1,6 @@
 var url = 'https://rti2dss.com/p3200';
+// var url = 'http://localhost:3200';
+
 sessionStorage.clear();
 let logIn = () => {
     const std_id = document.getElementById('std_id').value;

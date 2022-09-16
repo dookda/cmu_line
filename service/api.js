@@ -3,7 +3,6 @@ const moment = require('moment');
 const app = express.Router();
 const _ = require('lodash');
 const qrcode = require('qrcode');
-
 const con = require("./db");
 const db = con.db;
 

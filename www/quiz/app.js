@@ -45,7 +45,7 @@ const getScore = (usrid, quizId) => {
     axios.post(url + "/api/getscore", { usrid, quizId }).then(r => {
         // console.log(r.data.data);
         r.data.data.map(i => {
-            document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">แบบทดสอบหลังเรียน ${i.quizid} วันที่ ${i.dt} <br>คะแนน ${i.soretxt}</div>`
+            document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">แบบทดสอบหลังเรียน ${i.quizid} วันที่ ${i.dt} <br> <span class="badge rounded-pill text-bg-danger">${i.soretxt}</span> คะแนน</div>`
         })
     });
 }
@@ -55,7 +55,7 @@ const getScoreMid = (usrid, quizId) => {
     axios.post(url + "/api/getscore_mid", { usrid, quizId }).then(r => {
         // console.log(r.data.data);
         r.data.data.map(i => {
-            document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">เก็บคะแนนกลางภาค (20%) วันที่ ${i.dt} <br>คะแนน ${i.midscore}</div>`
+            document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">เก็บคะแนนกลางภาค (20%) วันที่ ${i.dt} <br> <span class="badge rounded-pill text-bg-danger">${i.midscore}</span> คะแนน</div>`
         })
     });
 }

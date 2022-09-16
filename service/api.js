@@ -234,7 +234,7 @@ app.post("/api/getscore", async (req, res) => {
     const sql = `SELECT *, TO_CHAR(ts, 'DD-MM-YYYY') as dt FROM quizscore WHERE usrid='${usrid}' ORDER BY quizid ASC`;
 
     await db.query(sql).then(r => {
-        console.log(sql);
+        // console.log(sql);
         res.status(200).json({
             data: r.rows
         })

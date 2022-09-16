@@ -43,7 +43,7 @@ const loadQuiz = (usrid) => {
 const getScore = (usrid, quizId) => {
     // const usrid = document.getElementById('usrid').value;
     axios.post(url + "/api/getscore", { usrid, quizId }).then(r => {
-        console.log(r.data.data);
+        // console.log(r.data.data);
         r.data.data.map(i => {
             document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">แบบทดสอบหลังเรียน ${i.quizid} วันที่ ${i.dt} <br>คะแนน ${i.soretxt}</div>`
         })
@@ -52,8 +52,8 @@ const getScore = (usrid, quizId) => {
 
 const getScoreMid = (usrid, quizId) => {
     // const usrid = document.getElementById('usrid').value;
-    axios.post(url + "/api/getscore", { usrid, quizId }).then(r => {
-        console.log(r.data.data);
+    axios.post(url + "/api/getscore_mid", { usrid, quizId }).then(r => {
+        // console.log(r.data.data);
         r.data.data.map(i => {
             document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">เก็บคะแนนกลางภาค (20%) วันที่ ${i.dt} <br>คะแนน ${i.midscore}</div>`
         })

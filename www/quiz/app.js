@@ -50,14 +50,25 @@ const getScore = (usrid, quizId) => {
     });
 }
 
+const getScoreMid = (usrid, quizId) => {
+    // const usrid = document.getElementById('usrid').value;
+    axios.post(url + "/api/getscore", { usrid, quizId }).then(r => {
+        console.log(r.data.data);
+        r.data.data.map(i => {
+            document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">เก็บคะแนนกลางภาค (20%) วันที่ ${i.dt} <br>คะแนน ${i.midscore}</div>`
+        })
+    });
+}
+
 const getUser = async (usrid) => {
     axios.post(url + '/api/getuser', { usrid }).then(async (r) => {
         document.getElementById('usernametxt').innerHTML = r.data.data[0].username;
         document.getElementById("username").value = r.data.data[0].username;
         document.getElementById("studentid").value = r.data.data[0].studentid;
         // await liff.closeWindow()
-        loadQuiz(usrid);
-        getScore(usrid);
+        await loadQuiz(usrid);
+        await getScore(usrid);
+        await getScoreMid(usrid);
     })
 }
 

@@ -22,3 +22,14 @@
 //https://docs.google.com/forms/d/e/1FAIpQLSeIG5QqRYGdQ_MMYtfRjglSaj19uJw18MU3_X_ptoi0OmCzbg/viewform?usp=pp_url&entry.28548348=sakda
 
 POST http://localhost:3200/api/checkquiz
+
+###
+
+GET http://localhost:8080/geoserver/rest/layers.json
+Content-Type: application/json
+Authorization: Basic admin:geoserver
+
+###
+GET http://localhost:8080/geoserver/rest/layers/states.json
+Content-Type: application/json
+Authorization: Basic admin:geoserver

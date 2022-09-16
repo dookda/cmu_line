@@ -56,7 +56,7 @@ const handleMessageEvent = async (e) => {
                         "imageUrl": "https://rti2dss.com/p3200/img/chat.png",
                         "action": {
                             "type": "uri",
-                            "label": "quiz",
+                            "label": "คะแนนเก็บ",
                             "uri": "https://rti2dss.com/p3200/quiz/"
                         }
                     },

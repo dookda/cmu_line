@@ -242,6 +242,22 @@ app.post("/api/getscore", async (req, res) => {
     })
 })
 
+app.post("/api/getscore_mid", async (req, res) => {
+    const { usrid } = req.body;
+    const sql = `SELECT md.*, TO_CHAR(md.ts, 'DD-MM-YYYY') as dt, st.usrid 
+    FROM scoremid md
+    LEFT join student st
+    ON md.studentid=st.studentid
+    WHERE st.usrid='${usrid}'`;
+
+    await db.query(sql).then(r => {
+        console.log(sql);
+        res.status(200).json({
+            data: r.rows
+        })
+    })
+})
+
 app.post("/api/genqr", (req, res) => {
     const { usrid } = req.body;
 

@@ -50,13 +50,16 @@ const getScore = (usrid, quizId) => {
     });
 }
 
-const getScoreMid = (usrid, quizId) => {
+const getScoreMid = (usrid) => {
     // const usrid = document.getElementById('usrid').value;
-    axios.post(url + "/api/getscore_mid", { usrid, quizId }).then(r => {
+    axios.post(url + "/api/getscore_mid", { usrid }).then(r => {
         // console.log(r.data.data);
-        r.data.data.map(i => {
-            document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">เก็บคะแนนกลางภาค (20%) วันที่ ${i.dt} <br> <span class="badge rounded-pill text-bg-danger">${i.midscore}</span> คะแนน</div>`
-        })
+        document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">คะแนนกลางภาค (20) <br> <span class="badge rounded-pill text-bg-danger">${r.data.data[0].mid_20p}</span> %</div>`
+        document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">คะแนนเทอมโปรเจ็ค (35)  <br> <span class="badge rounded-pill text-bg-danger">${r.data.data[0].termproj_35p}</span> %</div>`
+        document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">คะแนนการมีส่วนร่วม (10) <br> <span class="badge rounded-pill text-bg-danger">${r.data.data[0].par_10p}</span> %</div>`
+        // r.data.data.map(i => {
+        //     document.getElementById("score").innerHTML += `<div class="shadow-none p-3 mb-2 bg-light rounded">เก็บคะแนนกลางภาค (20%) วันที่ ${i.dt} <br> <span class="badge rounded-pill text-bg-danger">${i.midscore}</span> %</div>`
+        // })
     });
 }
 
@@ -66,8 +69,8 @@ const getUser = async (usrid) => {
         document.getElementById("username").value = r.data.data[0].username;
         document.getElementById("studentid").value = r.data.data[0].studentid;
         // await liff.closeWindow()
-        await loadQuiz(usrid);
-        await getScore(usrid);
+        // await loadQuiz(usrid);
+        // await getScore(usrid);
         await getScoreMid(usrid);
     })
 }

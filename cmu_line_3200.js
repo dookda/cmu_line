@@ -47,3 +47,6 @@ app.use(api);
 
 const api330 = require('./service/api330');
 app.use(api330);
+
+const api104 = require('./service/api104');
+app.use(api104);

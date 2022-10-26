@@ -243,10 +243,10 @@ app.post("/api/getscore", async (req, res) => {
 
 app.post("/api/getscore_mid", async (req, res) => {
     const { usrid } = req.body;
-    const sql = `SELECT md.*, TO_CHAR(md.ts, 'DD-MM-YYYY') as dt, st.usrid 
-    FROM scoremid md
+    const sql = `SELECT md.*,  st.usrid 
+    FROM score377 md
     LEFT join student st
-    ON md.studentid=st.studentid
+    ON md.std_id=st.studentid
     WHERE st.usrid='${usrid}'`;
 
     await db.query(sql).then(r => {

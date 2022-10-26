@@ -24,13 +24,12 @@ app.post("/api/score330", (req, res) => {
 })
 
 app.post("/api/score330login", (req, res) => {
-      const { std_id, pass } = req.body;
-      console.log(std_id, pass);
-      let sql = `select std_id from public.score330 where std_id = ${std_id} and pass='${pass}' `
+      const { name_en, pass } = req.body;
+      let sql = `select std_id from public.score330 where name_en = '${name_en}' and pass='${pass}'`
       db.query(sql).then(r => {
-            // console.log(r.rows);
             res.status(200).json({
-                  data: r.rows
+                  data: true,
+                  std_id: r.rows[0].std_id
             })
       })
 })

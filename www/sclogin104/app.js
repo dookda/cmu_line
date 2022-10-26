@@ -1,5 +1,5 @@
-// var url = 'https://rti2dss.com/p3200';
-var url = 'http://localhost:3200';
+var url = 'https://rti2dss.com/p3200';
+// var url = 'http://localhost:3200';
 
 let setCookie = (sid) => {
     var now = new Date();

@@ -9,11 +9,11 @@ let setCookie = (sid) => {
 
 sessionStorage.clear();
 let logIn = () => {
-    const std_id = document.getElementById('std_id').value;
+    const name_th = document.getElementById('name_th').value;
     const pass = document.getElementById('pass').value;
     // console.log(std_id, pass);
-    axios.post(url + '/api/score104login', { name_en: std_id.toUpperCase(), pass }).then(async (r) => {
-        console.log(r.data.std_id);
+    axios.post(url + '/api/score104login', { name_th, pass }).then(async (r) => {
+        // console.log(r.data.std_id);
         if (r.data.data) {
             setCookie(r.data.std_id)
             location.href = "./../score104/index.html";

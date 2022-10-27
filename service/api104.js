@@ -25,9 +25,9 @@ app.post("/api/score104", (req, res) => {
 })
 
 app.post("/api/score104login", (req, res) => {
-    const { name_en, pass } = req.body;
+    const { name_th, pass } = req.body;
     // console.log(name_en, pass);
-    let sql = `select std_id from score104 where name_en = '${name_en}' and pass='${pass}' `
+    let sql = `select std_id from score104 where name_th = '${name_th}' and pass='${pass}' `
     // console.log(sql);
     db.query(sql).then(r => {
         // console.log(r.rows);
